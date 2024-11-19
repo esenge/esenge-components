@@ -1,0 +1,20 @@
+.btn {
+  background-color: var(--primary-color);
+  border-color: var(--primary-dark-color);
+  color: var(--button-text-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: var(--primary-dark-color);
+  }
+
+  &:disabled {
+    background-color: var(--disabled-color);
+    cursor: not-allowed;
+  }
+}
