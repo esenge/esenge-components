@@ -1,33 +1,58 @@
 import path from 'path';
-import { Configuration } from 'webpack';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
-const config: Configuration = {
-    entry: './src/index.ts', // Your entry point
+const config = {
+    entry: './src/index.ts',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'commonjs2',
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'], // Add extensions for TypeScript and JSX
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     module: {
         rules: [
             {
                 test: /\.(ts|tsx)$/,
-                use: 'ts-loader', // Use ts-loader for TypeScript files
+                use: 'ts-loader',
                 exclude: /node_modules/,
             },
             {
                 test: /\.scss$/,
                 use: [
-                    'style-loader', // Inject styles into DOM
-                    'css-loader',   // Process CSS
-                    'sass-loader',  // Compile SCSS to CSS
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true, // Enable CSS Modules
+                        },
+                    },
+                    'sass-loader',
                 ],
             },
         ],
     },
-    mode: 'production', // Set to 'production' for optimized build
+    plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: 'src/**/*.scss',
+                    to({ context, absoluteFilename }) {
+                        // Preserve the structure relative to 'src'
+                        const targetPath = absoluteFilename.replace(`${context}/src/`, '');
+                        return `${targetPath}`;
+                    },
+                },
+            ],
+        }),
+
+    ],
+    externals: {
+        react: 'react',
+        'react-dom': 'react-dom',
+    },
+    mode: 'production',
 };
 
 export default config;

@@ -1,20 +1,121 @@
 .btn {
-  background-color: var(--primary-color);
-  border-color: var(--primary-dark-color);
-  color: var(--button-text-color);
-  font-size: 16px;
-  padding: 10px 20px;
   cursor: pointer;
   outline: none;
   border: none;
-  border-radius: 4px;
 
-  &:hover {
-    background-color: var(--primary-dark-color);
+  &.primary {
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: 1px solid var(--dark-green);
+
+    &:hover {
+      background-color: var(--light-green);
+    }
+
+    &:active {
+      background-color: var(--dark-green);
+    }
+
+    &:disabled {
+      background-color: var(--muted-green);
+      border-color: var(--muted-green);
+      cursor: not-allowed;
+      color: var(--medium-gray);
+    }
+
   }
 
-  &:disabled {
-    background-color: var(--disabled-color);
-    cursor: not-allowed;
+  &.secondary {
+    background-color: var(--primary-violet);
+    color: var(--white);
+    border: 1px solid var(--dark-violet);
+
+    &:hover {
+      background-color: var(--light-violet);
+    }
+
+    &:active {
+      background-color: var(--dark-violet);
+    }
+
+    &:disabled {
+      background-color: var(--muted-violet);
+      border-color: var(--muted-violet);
+      cursor: not-allowed;
+      color: var(--medium-gray);
+    }
+  }
+
+  &.warning {
+    background-color: var(--primary-orange);
+    color: var(--white);
+    border: 1px solid var(--dark-orange);
+
+    &:hover {
+      background-color: var(--light-orange);
+    }
+
+    &:active {
+      background-color: var(--dark-orange);
+    }
+
+    &:disabled {
+      background-color: var(--muted-orange);
+      border-color: var(--muted-orange);
+      cursor: not-allowed;
+      color: var(--medium-gray);
+    }
+  }
+
+  &.error {
+    background-color: var(--primary-red);
+    color: var(--white);
+    border: 1px solid var(--dark-red);
+
+    &:hover {
+      background-color: var(--light-red);
+    }
+
+    &:active {
+      background-color: var(--dark-red);
+    }
+
+    &:disabled {
+      background-color: var(--muted-red);
+      border-color: var(--muted-red);
+      cursor: not-allowed;
+      color: var(--medium-gray);
+    }
+  }
+
+  &.neutral {
+    background-color: var(--medium-gray);
+    color: var(--black);
+    border: 1px solid var(--dark-gray);
+
+    &:hover {
+      background-color: var(--light-gray);
+    }
+
+    &:active {
+      background-color: var(--dark-gray);
+    }
+
+    &:disabled {
+      background-color: var(--muted-gray);
+      border-color: var(--muted-gray);
+      cursor: not-allowed;
+      color: var(--white);
+    }
+  }
+
+  &.m {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    border-radius: 0.375rem;
   }
 }
